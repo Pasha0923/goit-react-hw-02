@@ -14,7 +14,7 @@ function App() {
     });
   };
 
-  const [values, setValues] = useState(0);
+  const [values, setValues] = useState(resetFeedback);
 
   const updateFeedback = (feedbackType) => {
     setValues((prevState) => ({
@@ -22,6 +22,7 @@ function App() {
       [feedbackType]: prevState[feedbackType] + 1,
     }));
   };
+
   const totalFeedback = values.good + values.neutral + values.bad;
   const positiveFeedback = Math.round(
     ((values.good + values.neutral) / totalFeedback) * 100
@@ -35,6 +36,8 @@ function App() {
         onReset={resetFeedback}
         total={totalFeedback}
       />
+      {/* якщо кількість відгуків = 0 то відображається повідомлення
+      (нотифікашка с текстом) No feedback yet в іншому разі показуються відгуки */}
       {totalFeedback === 0 ? (
         <Notification />
       ) : (
