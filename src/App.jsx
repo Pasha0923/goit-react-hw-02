@@ -12,12 +12,6 @@ function App() {
     bad: 0,
   };
 
-  // const [values, setValues] = useState(() => {
-  //   const stringifiedFeedback = localStorage.getItem("feedback");
-  //   if (!stringifiedFeedback) return stateReviews;
-  //   const parsedFeedbacks = JSON.parse(stringifiedFeedback);
-  //   return parsedFeedbacks;
-  // });
   const [values, setValues] = useState(() => {
     const stringifiedFeedback = window.localStorage.getItem("feedback");
     if (stringifiedFeedback !== null)
@@ -29,7 +23,12 @@ function App() {
         }
       );
   });
-
+  // const [values, setValues] = useState(() => {
+  //   const stringifiedFeedback = localStorage.getItem("feedback");
+  //   if (!stringifiedFeedback) return stateReviews;
+  //   const parsedFeedbacks = JSON.parse(stringifiedFeedback);
+  //   return parsedFeedbacks;
+  // });
   useEffect(() => {
     window.localStorage.setItem("feedback", JSON.stringify(values));
   }, [values]);
