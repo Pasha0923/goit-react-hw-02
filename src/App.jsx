@@ -20,14 +20,13 @@ function App() {
   // });
   const [values, setValues] = useState(() => {
     const stringifiedFeedback = window.localStorage.getItem("feedback");
-    if (stringifiedFeedback !== null)
-      return (
-        JSON.parse(stringifiedFeedback) || {
-          good: 0,
-          neutral: 0,
-          bad: 0,
-        }
-      );
+    if (stringifiedFeedback !== null) return;
+    JSON.parse(stringifiedFeedback);
+    return {
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    };
   });
 
   useEffect(() => {
